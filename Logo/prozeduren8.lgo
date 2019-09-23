@@ -1,0 +1,22 @@
+lerne addiere :w
+wenn ((zähle :w) <= 1)
+ [
+     rg (erstes :w)
+]
+ [
+    rg ((erstes :w) + (addiere (oe :w)))
+]
+Ende
+
+lerne addiere2 :w
+setze "o 0
+wh ((zähle :w)-1)
+ [
+     element :o :w
+     setze "o (:o+1)
+]
+Ende
+
+lerne mittelwert :w
+rg ((addiere :w) / (zähle :w))
+Ende

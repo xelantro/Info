@@ -1,0 +1,31 @@
+lerne leseesel :w
+   wenn (gleich? (zähle :w) 1)
+ [
+    rückgabe :w
+]
+ [
+     rückgabe (wort (letztes :w) (leseesel (ol :w)))
+]
+Ende
+
+lerne istpalidrom :w
+   wenn (gleich? (leseesel :w) :w)
+     [
+    rückgabe wahr
+]
+ [
+ rückgabe falsch
+]
+ 
+Ende
+
+lerne istmax :l
+ wenn (gleich? (zähle :l) 1  )
+ [
+    rückgabe erstes
+]
+ [
+    rückgabe (istmax  )
+]
+ 
+Ende

@@ -2,6 +2,8 @@
 .classpath
 .project
 bin/
+.pdf
+doc/
 
 # Compiled class file
 *.class

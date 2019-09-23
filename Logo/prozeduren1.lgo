@@ -1,0 +1,26 @@
+lerne neck :e :l
+wh :e [vw :l re 360/:e]
+Ende
+
+lerne rechteck :l1 :l2
+wh 2 [vw :l1 re 90 vw :l2 re 90]
+Ende
+
+lerne stern :z :s [ :w 150  ]
+  wh :z 
+  [
+    vw :s re :w vw :s li (:w - 360/:z) 
+  ]
+Ende
+
+lerne haus [ :x 200  ]
+  re 90 neck 4 :x vw :x re 180 neck 3 :x sh 
+  sxy (:x-:x/10) (-:x)
+  sa (rechteck :x/4 :x-:x/2) sh
+  sxy (:x - :x / 10) (0 - :x+130)
+  sa neck 4 :x/4 sh
+  sxy (:x - :x / 10 - 100) (0 - :x+130) 
+  sa neck 4 :x/4 sh
+  sxy (:x - :x / 10 -100) (0 - :x+50) 
+  sa neck 4 :x/4 sh
+Ende

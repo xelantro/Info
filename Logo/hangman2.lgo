@@ -1,0 +1,316 @@
+
+lerne hangman_fehler :x :f
+heim
+setze "x (:x *20)
+sa
+ak 270
+sstb 3
+wenn ( :f >= 1)
+ [
+     rw (3*:x)
+     vw (2*:x)     
+]
+wenn ( :f >=2)
+ [
+     re 90
+     vw (4*:x)
+]
+wenn ( :f >=  3)
+ [
+     re 90
+     vw (2*:x)
+]
+wenn (  :f >= 4)
+ [
+     re 90
+     vw :x
+]
+wenn (  :f >= 5)
+ [
+     sh
+     vw (0.5*:x)
+     kreis (0.5*:x) 
+     vw (0.5*:x)
+     sa
+]
+wenn (  :f >= 6)
+ [
+     re 45
+     vw :x
+     rw :x
+     li 90
+     vw :x 
+     rw :x
+]
+wenn (  :f >= 7)
+ [
+    re 45
+    vw :x
+]
+wenn ( :f >= 8)
+ [
+    re 45
+     vw :x
+     rw :x
+     li 90
+     vw :x 
+     rw :x
+]
+wenn (  :f >= 9)
+ [
+    li 135
+    vw :x
+    arc (:x/4) 0 60
+    arc (:x/4) 300 360
+    sh
+    wenn (  :f >= 99)
+    [
+        vw (:x/2.9)
+        sa
+        sstb 15
+        vw (:x/9)
+        sh
+    ]
+    [
+        vw (:x/2.3)
+    ]
+    sstb 3
+    vw (:x/5)
+    re 90
+    vw (:x/3.9) 
+    kreis (:x/7)
+    li 180
+    vw (:x/2)
+    kreis (:x/7)
+    sa
+]
+Ende
+
+lerne hangman_dialog
+  lese [Wie heißt du?] "name
+  lese (satz [Hallo] :name [, gib bitte das zu eratene Wort ein]) "wort
+  lb lt
+  lese [bitte computer weitergeben] "ph
+  lese [Wie heißt du?] "name2
+  lese (satz [Ok] :name2 [, bitte fange an zu raten]) "wort
+
+Ende
+
+lerne spierale :x :o
+wh :o
+ [
+    setze "x (:x*2)
+    vw :x
+    re 115
+ ]
+Ende
+
+
+
+lerne dreiecke :x :o
+wenn (:o > 0)
+ [
+vw :x 
+rw :x
+li 55
+dreiecke (:x/1.5) (:o-1)
+re 55
+li 120
+vw :x
+li 120 
+vw :x
+]
+Ende
+
+
+lerne hangman
+  init
+  lt lb 
+  dialog
+  lt
+  rateBuchstabe
+Ende
+
+lerne leseesel :w
+  wenn ((zähle :w) = 1)
+  [
+    rg :w
+  ]
+  [
+    rg wort (letztes :w) (leseesel (ohneletztes :w))
+  ]
+Ende
+
+lerne gibmaximum :l
+  wenn ((zähle :l) = 1)
+  [
+    rg (erstes :l)
+  ]
+  [
+    wenn ((erstes :l) >= (gibMaximum (ohneerstes :l)))
+    [
+      rg (erstes :l)
+    ]
+    [
+      rg (gibMaximum (ohneerstes :l))
+    ] 
+  ]
+Ende
+
+lerne gibminimum :l
+  wenn ((zähle :l) = 1)
+  [
+    rg (erstes :l)
+  ]
+  [
+    wenn ((erstes :l) <= (gibMinimum (ohneerstes :l)))
+    [
+      rg (erstes :l)
+    ]
+    [
+      rg (gibMinimum (ohneerstes :l))
+    ] 
+  ]
+Ende
+
+lerne addiere :l
+  wenn ((zähle :l) = 1)
+  [
+    rg (erstes :l)
+  ]
+  [
+    rg (erstes :l) + (addiere (ohneerstes :l))
+  ]
+Ende
+
+lerne addiere_wh :l
+  setze "s 0
+  wh (zähle :l)
+  [
+    setze "s (:s + erstes :l)
+    setze "l ohneerstes :l
+  ] 
+  rg :s
+Ende
+
+lerne mittelwert :l
+  rg (addiere :l) / (zähle :l)
+Ende
+
+lerne sortiere :l1 :l2
+  wenn ((zähle :l1) = 0)
+  [
+    rg :l2
+  ]
+  [
+    setze "min (gibminimum :l1)
+    setze "l2 mitletztem  :min :l2
+    setze "l1 entferne :min :l1
+    rg sortiere :l1 :l2
+  ]
+Ende
+
+lerne dialog
+  lese [Wie heißt du?] "name
+  lese (Satz [Ok] :name  [, gib ein zu ratendes Wort vor!]) "loesungswort
+Ende
+
+lerne hangmanfigur :x :f
+  wenn (:f = 1)
+  [
+    re 90 vw 3*:x rw 2*:x li 90
+  ]
+  wenn (:f = 2)
+  [
+    vw 5*:x re 90
+  ]
+  wenn (:f = 3)
+  [
+    vw 2*:x re 90
+  ]
+  wenn (:f = 4)
+  [
+    vw :x sh vw :x/2 sa
+  ]
+  wenn (:f = 5)
+  [
+    kreis :x/2 sh vw :x/2 sa
+  ]
+  wenn (:f = 6)
+  [
+    vw 2*:x rw 2*:x
+  ]
+  wenn (:f = 7)
+  [
+    re 45 vw 1.5*:x rw 1.5*:x li 90 vw 1.5*:x rw 1.5*:x re 45 sh vw 2*:x sa
+  ]
+  wenn (:f = 8)
+  [
+    re 45 vw 1.5*:x rw 1.5*:x li 90 vw 1.5*:x rw 1.5*:x re 45 sh rw 2.5*:x re 180 sa
+  ]
+  wenn (:f = 9)
+  [
+    sh li 90 vw :x/4 re 90 vw :x/5 sa kreis :x/6 sh re 90 vw :x/2 sa kreis :x/6 sh rw :x/4 re 90 vw 1.2*:x  sa bogen 0.75*:x 330 30
+  ]
+Ende
+
+lerne ratebuchstabe
+   wenn (und (:fehler < :maxfehler) (nicht (vollstaendiggeraten :loesungswort :gerateneBuchstaben)))          # spiel geht weiter
+  [
+      setze "gerateneBuchstaben (me :gerateneBuchstaben (liste (zeichen lz)))
+      wenn(istenthalten :loesungswort :gerateneBuchstaben)
+        [
+            
+        ]
+        [
+          setze "fehler (:fehler + 1)
+       ]
+    
+    # rekursiver Selbstaufruf
+    ratebuchstabe
+  ]# spiel beendet
+  [
+     wenn ( :fehler > :maxfehler ) # fehlerzahl überschritten
+    [
+      dz (Satz [Looser! Du hast das Wort nicht erraten es war ] :loesungswort [.])
+    ]
+    # lösung gefunden
+    [
+      dz (Satz [Super! Du hast das Wort erraten es war ] :loesungswort [.])
+    ]
+  ] 
+Ende
+
+lerne init
+  setze "fehler 0
+  setze "maxfehler 9
+  setze "gerateneBuchstaben []
+  setze "loesungswort "
+Ende
+
+lerne vollstaendiggeraten :wort :buchstabenliste
+  wenn ((zähle :wort) = 0)
+   [ 
+    rg wahr
+   ]
+   [
+      wenn (istenthalten (erstes :wort) :buchstabenliste)
+      [
+        rg vollstaendiggeraten (ohneerstes :wort) :buchstabenliste
+      ]
+      [
+        rg falsch
+      ]
+   ]
+Ende
+
+
+lerne istenthalten :b :liste
+  wenn ((zähle :liste) = 0)
+  [
+    rg falsch
+  ]
+  [
+    rg (nicht ((zähle(entferne :b :liste)) = (zähle :b)))
+  ]
+Ende

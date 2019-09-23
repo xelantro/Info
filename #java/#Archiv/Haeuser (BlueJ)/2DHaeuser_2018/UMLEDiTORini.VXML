@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<VorgabenUMLEDiTOR Versionskennzeichen="Version 1.0">
+<Vorgaben>
+<VorgabeItem Bezeichner="view.dialoge.JavaClassAuswahlDialog">
+<par0 Name="dx" Typ="int" Wert="0"/>
+<par1 Name="dy" Typ="int" Wert="0"/>
+<par2 Name="breite" Typ="int" Wert="526"/>
+<par3 Name="hoehe" Typ="int" Wert="509"/>
+</VorgabeItem>
+<VorgabeItem Bezeichner="view.dialoge.JavaQuelleAuswahlDialog">
+<par0 Name="dx" Typ="int" Wert="0"/>
+<par1 Name="dy" Typ="int" Wert="0"/>
+<par2 Name="breite" Typ="int" Wert="496"/>
+<par3 Name="hoehe" Typ="int" Wert="585"/>
+</VorgabeItem>
+<VorgabeItem Bezeichner="view.dialoge.KlassenAuswahlDialog">
+<par0 Name="dx" Typ="int" Wert="0"/>
+<par1 Name="dy" Typ="int" Wert="0"/>
+<par2 Name="breite" Typ="int" Wert="450"/>
+<par3 Name="hoehe" Typ="int" Wert="300"/>
+</VorgabeItem>
+<VorgabeItem Bezeichner="view.dialoge.FontAuswahlDialog">
+<par0 Name="dx" Typ="int" Wert="0"/>
+<par1 Name="dy" Typ="int" Wert="0"/>
+<par2 Name="breite" Typ="int" Wert="491"/>
+<par3 Name="hoehe" Typ="int" Wert="251"/>
+</VorgabeItem>
+<VorgabeItem Bezeichner="view.dialoge.KlassenFuerAnzeigeAuswahlDialog">
+<par0 Name="dx" Typ="int" Wert="0"/>
+<par1 Name="dy" Typ="int" Wert="0"/>
+<par2 Name="breite" Typ="int" Wert="450"/>
+<par3 Name="hoehe" Typ="int" Wert="300"/>
+</VorgabeItem>
+<VorgabeItem Bezeichner="view.dialoge.AttributAenderungEingabe2">
+<par0 Name="dx" Typ="int" Wert="0"/>
+<par1 Name="dy" Typ="int" Wert="0"/>
+<par2 Name="breite" Typ="int" Wert="452"/>
+<par3 Name="hoehe" Typ="int" Wert="372"/>
+</VorgabeItem>
+<VorgabeItem Bezeichner="view.dialoge.DatentypDialog">
+<par0 Name="dx" Typ="int" Wert="3"/>
+<par1 Name="dy" Typ="int" Wert="164"/>
+<par2 Name="breite" Typ="int" Wert="529"/>
+<par3 Name="hoehe" Typ="int" Wert="408"/>
+</VorgabeItem>
+<VorgabeItem Bezeichner="view.dialoge.AssoziationsPfadKontextDialog">
+<par0 Name="dx" Typ="int" Wert="0"/>
+<par1 Name="dy" Typ="int" Wert="0"/>
+<par2 Name="breite" Typ="int" Wert="617"/>
+<par3 Name="hoehe" Typ="int" Wert="448"/>
+</VorgabeItem>
+<VorgabeItem Bezeichner="view.dialoge.MultiplizitaetenDialog">
+<par0 Name="dx" Typ="int" Wert="0"/>
+<par1 Name="dy" Typ="int" Wert="0"/>
+<par2 Name="breite" Typ="int" Wert="436"/>
+<par3 Name="hoehe" Typ="int" Wert="296"/>
+</VorgabeItem>
+<VorgabeItem Bezeichner="view.dialoge.TypenAuswahlDialog">
+<par0 Name="dx" Typ="int" Wert="0"/>
+<par1 Name="dy" Typ="int" Wert="0"/>
+<par2 Name="breite" Typ="int" Wert="450"/>
+<par3 Name="hoehe" Typ="int" Wert="300"/>
+</VorgabeItem>
+</Vorgaben>
+</VorgabenUMLEDiTOR>

@@ -1,0 +1,62 @@
+# Hauptkommando phydreiecke 100 80 3
+
+
+
+lerne farn :x :o
+  wenn (:o<=0)
+  [
+    #Abbruch
+  ]
+  [
+    vw :x
+    li 60
+    sstf rot kreis 2 sstf schwarz
+    farn (:x*0.3) (:o-1)  # tue dasselbe nocheinmal, aber kleiner
+    re 60
+    
+    re 2
+    vw :x
+     
+    re 60
+    sstf rot kreis 2 sstf schwarz
+    farn (:x*0.2) (:o-1) # tue dasselbe nocheinmal, aber kleiner
+    li 60
+
+    re 2
+    sstf rot kreis 2 sstf schwarz
+    farn (:x*0.9) (:o-1) # tue dasselbe nocheinmal, aber kleiner
+    li 2
+    
+    sh
+    rw :x
+    li 2
+    rw :x
+    sa
+  ]
+Ende
+lerne phydreiecke :x :w :o
+  wenn (:o<=0)
+  [
+    #Abbruch
+  ]
+  [
+    vw :x
+    
+
+    phydreiecke  (:x*0.3) :w (:o-1)  # tue dasselbe nocheinmal, aber kleiner
+    re 60
+    
+   
+  ]
+Ende
+lerne quadrat :x
+  vw :x
+  li 90
+  vw :x
+  li 90
+Ende
+lerne rdreieck :x :w
+vw :x
+re :w
+
+Ende

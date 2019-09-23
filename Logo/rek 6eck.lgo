@@ -1,0 +1,10 @@
+lerne sechseckrekursion :x :o
+  wenn (:o>0) 
+  [ 6eck :x re 360/6 vw :x li 360/6 vw :x re 90
+      sechseckrekursion (:x/2) (:o-1)
+     ] 
+Ende
+
+lerne 6eck :x
+ wh 2 [ li 360/6 vw :x re 360/6 vw :x re 360/6 vw :x re 360/3 ]
+Ende

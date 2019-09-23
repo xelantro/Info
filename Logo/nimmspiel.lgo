@@ -1,0 +1,53 @@
+lerne nimmspiel :h :l
+
+setze "h :h
+setze "zok 0
+setze "f 0
+setze "f1 0
+dz Satz "Streichhölzer :h
+dz (Satz [ Nimm 1, 2, oder 3 Hölzer] )
+#spielerzug
+wenn (:h > 3)
+ [
+  setze "z (zeichen lz)
+  wenn (zahl? :z)
+   [ wenn (und (:z<= 3) (:z >= 1 ))
+      [
+          setze "zok :z
+      ]
+      [
+          setze "f1 1
+          setze "f 1
+      ]
+    ]
+  setze "h (:h - :zok)
+  dz ( satz [Du nimmst] :z )
+  dz Satz "Streichhölzer :h
+]
+ [
+   dz (satz [ der computer hat gewonnen])
+   setze "f 1
+]
+#computerzug
+wenn (:f = 0)
+ [
+wenn (:h > 3)
+ [
+     setze "z ((zz 2)+1)
+     dz ( satz [Der Computer nimmt] :z )
+     setze "h (:h - :z)
+]
+ [
+      dz (satz [Glückwunsch, du hast gewonnen])
+      setze "f 1
+]
+]
+wenn (:f1 =1)
+ [
+    dz (satz [NEIIIIIN! nimm ein zahl zwischen 1 und 3, du idiot ] ) 
+]
+wenn (:f =0)
+ [
+nimmspiel :h :l
+]
+Ende

@@ -1,0 +1,56 @@
+lerne farn :x :o
+  wenn (:o<=0)
+  [
+    #Abbruch
+  ]
+  [
+    vw :x
+    li 60
+    sstf rot kreis 2 sstf schwarz
+    farn (:x*0.3) (:o-1)  # tue dasselbe nocheinmal, aber kleiner
+    re 60
+    
+    re 2
+    vw :x
+     
+    re 60
+    sstf rot kreis 2 sstf schwarz
+    farn (:x*0.2) (:o-1) # tue dasselbe nocheinmal, aber kleiner
+    li 60
+
+    re 2
+    sstf rot kreis 2 sstf schwarz
+    farn (:x*0.9) (:o-1) # tue dasselbe nocheinmal, aber kleiner
+    li 2
+    
+    sh
+    rw :x
+    li 2
+    rw :x
+    sa
+  ]
+Ende
+
+lerne tunnel :l :o [ :k 91  ]
+wenn (:o >= 0)
+ [
+   vw :l 
+   re :k
+   (tunnel (:l*0.9) (:o-1) :k)
+   li :k
+   rw :l
+ ]
+Ende
+
+
+lerne quadrate :x :o
+wenn (:o >= 0)
+ [
+  
+  re 90
+  vw :x
+  re 90
+  quadrate (:x * 0.9) (:o-1)
+
+]
+Ende

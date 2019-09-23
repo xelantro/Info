@@ -1,0 +1,174 @@
+lerne farn :x :o
+  wenn (:o<=0)
+  [
+    #Abbruch
+  ]
+  [
+    vw :x
+    li 60
+    sstf rot kreis 2 sstf schwarz
+    farn (:x*0.3) (:o-1)  # tue dasselbe nocheinmal, aber kleiner
+    re 60
+    
+    re 2
+    vw :x
+     
+    re 60
+    sstf rot kreis 2 sstf schwarz
+    farn (:x*0.2) (:o-1) # tue dasselbe nocheinmal, aber kleiner
+    li 60
+
+    re 2
+    sstf rot kreis 2 sstf schwarz
+    farn (:x*0.9) (:o-1) # tue dasselbe nocheinmal, aber kleiner
+    li 2
+    
+    sh
+    rw :x
+    li 2
+    rw :x
+    sa
+  ]
+Ende
+lerne neck :e :l
+  wh :e [vw :l re 360/:e]
+Ende
+
+lerne rechteck :l1 :l2
+  wh 2 [vw :l1 re 90 vw :l2 re 90]
+Ende
+
+lerne stern :z :s [ :w 150  ]
+  wh :z 
+  [
+    vw :s re :w vw :s li (:w - 360/:z) 
+  ]
+Ende
+
+lerne haus [ :x 40  ]
+  neck 4 :x*5
+  vw :x*5 re 30 neck 3 :x*5 li 30 rw :x*5
+  sh re 90 vw :x li 90 sa rechteck :x*2 :x
+  sh vw :x*3 sa neck 4 :x
+  sh re 90 vw :x*2 li 90 sa neck 4 :x
+  sh rw :x*2 sa neck 4 :x
+  sh rw :x li 90 vw :x*3 re 90
+Ende
+
+lerne häuser :g :a [ :b 50  ] [ :h 50  ]
+  wh :a 
+  [
+  (haus :g) sh
+  sxy (:g-:g/10) (-:g)
+  rw :g/8
+  rw :b re 90 vw :h
+  setze "g (:g-20)
+  sa
+  ]
+Ende
+
+lerne landschaft :a [ :y 150  ]
+  setze "x (:y/10) 
+  sh sxy (-:a) 0 sa
+  wh 8
+  [
+    (haus :x)
+    setze "x (:x-0.5)
+    sh re 90 vw :x*6 li 90 vw :x*2 sa
+  ]
+Ende
+
+lerne wolke
+wh 100 
+[    
+ wh 20
+     [
+     vw 4
+     re 2
+     ]
+]
+Ende
+
+lerne tunnel :l :o [ :k 91  ]
+wenn (:o >= 0)
+ [
+   vw :l 
+   re :k
+   (tunnel (:l*0.9) (:o-1) :k)
+   li :k
+   rw :l
+ ]
+Ende
+
+
+lerne quadrate :x :o
+wenn (:o >= 0)
+ [
+  vw :x
+  re 90
+  vw :x
+
+  li 90
+  quadrate (:x*0.8) (:o-1)
+  re 90
+
+  re 90
+  vw :x
+  re 90
+  vw :x
+  re 90
+]
+Ende
+
+lerne baum :x :o
+wenn (:o >= 0)
+ [
+   vw :x
+   li 45
+   vw (:x/3)
+
+   re 45
+   baum (:x*0.5) (:o-1)
+   li 45
+
+   rw (:x/3)
+   re 90
+   vw (:x/3)
+
+   li 45
+   baum (:x*0.5) (:o-1)
+   re 45
+
+   rw (:x/3)
+   li 45
+   rw :x
+ ]
+Ende
+
+lerne deiecke :x :o
+wenn (:o >= 0)
+ [
+  vw :x
+
+  re 360/1.5
+  deiecke (:x*0.5) (:o-1)
+  li 360/1.5
+
+  re 360/3
+  vw :x
+
+  re 360/1.5
+  deiecke (:x*0.5) (:o-1)
+  li 360/1.5
+
+  re 360/3
+  vw :x
+
+  re 360/1.5
+  deiecke (:x*0.5) (:o-1)
+  li 360/1.5
+
+  re 360/3
+  vw :x
+]
+Ende

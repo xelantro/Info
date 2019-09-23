@@ -1,0 +1,58 @@
+lerne neck :e :l
+  wh :e [vw :l re 360/:e]
+Ende
+
+lerne rechteck :l1 :l2
+  wh 2 [vw :l1 re 90 vw :l2 re 90]
+Ende
+
+lerne stern :z :s [ :w 150  ]
+  wh :z 
+  [
+    vw :s re :w vw :s li (:w - 360/:z) 
+  ]
+Ende
+
+lerne haus [ :x 40  ]
+  neck 4 :x*5
+  vw :x*5 re 30 neck 3 :x*5 li 30 rw :x*5
+  sh re 90 vw :x li 90 sa rechteck :x*2 :x
+  sh vw :x*3 sa neck 4 :x
+  sh re 90 vw :x*2 li 90 sa neck 4 :x
+  sh rw :x*2 sa neck 4 :x
+  sh rw :x li 90 vw :x*3 re 90
+Ende
+
+lerne häuser :g :a [ :b 50  ] [ :h 50  ]
+  wh :a 
+  [
+  (haus :g) sh
+  sxy (:g-:g/10) (-:g)
+  rw :g/8
+  rw :b re 90 vw :h
+  setze "g (:g-20)
+  sa
+  ]
+Ende
+
+lerne landschaft :a [ :y 150  ]
+  setze "x (:y/10) 
+  sh sxy (-:a) 0 sa
+  wh 8
+  [
+    (haus :x)
+    setze "x (:x-0.5)
+    sh re 90 vw :x*6 li 90 vw :x*2 sa
+  ]
+Ende
+
+lerne wolke
+wh 100 
+[    
+ wh 20
+     [
+     vw 4
+     re 2
+     ]
+]
+Ende

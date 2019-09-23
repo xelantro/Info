@@ -1,0 +1,68 @@
+lerne dreieckfigur :x :o
+wenn (:o > 0)
+ [
+wh 3
+ [
+vw :x
+re 60
+dreieckfigur (:x/2) (:o-1)
+li 60
+re 120
+]
+]
+Ende
+
+
+lerne quadratfigur :x :o
+wenn (:o > 0)
+ [
+wh 4
+ [
+vw :x
+re 45
+quadratFigur (:x/2) (:o-1)
+li 45
+re 90
+]
+]
+Ende
+
+lerne neck :n :x
+  wh :n [vw :x re (360/:n)]
+Ende
+
+lerne sierpinskidreieck :x :o
+  wenn (:o > 0)
+  [
+    wh 3
+    [
+      sierpinskidreieck (:x/2) (:o-1)
+      vw :x re 120
+    ]
+  ]
+Ende
+
+lerne sierpinskidreieck2 :x :o
+  wenn (:o > 0)
+  [
+      wh 3 [
+        sierpinskidreieck2 (:x/2) (:o-1)
+        sh vw :x/2 sa re 120
+      ]
+  ]
+  [
+     nEck 3 (:x/2) 
+  ]
+Ende
+
+lerne kochkurve :x :o
+wenn (:o > 0)
+ [
+re 120
+vw (:x/2)
+li 60
+kochKurve (:x/2) (:o-1)
+re 60
+vw (:x/2)
+]
+Ende

@@ -1,0 +1,133 @@
+
+lerne hangman_fehler :x :f
+heim
+setze "x (:x *20)
+sa
+ak 270
+sstb 3
+wenn ( :f >= 1)
+ [
+     rw (3*:x)
+     vw (2*:x)     
+]
+wenn ( :f >=2)
+ [
+     re 90
+     vw (4*:x)
+]
+wenn ( :f >=  3)
+ [
+     re 90
+     vw (2*:x)
+]
+wenn (  :f >= 4)
+ [
+     re 90
+     vw :x
+]
+wenn (  :f >= 5)
+ [
+     sh
+     vw (0.5*:x)
+     kreis (0.5*:x) 
+     vw (0.5*:x)
+     sa
+]
+wenn (  :f >= 6)
+ [
+     re 45
+     vw :x
+     rw :x
+     li 90
+     vw :x 
+     rw :x
+]
+wenn (  :f >= 7)
+ [
+    re 45
+    vw :x
+]
+wenn ( :f >= 8)
+ [
+    re 45
+     vw :x
+     rw :x
+     li 90
+     vw :x 
+     rw :x
+]
+wenn (  :f >= 9)
+ [
+    li 135
+    vw :x
+    arc (:x/4) 0 60
+    arc (:x/4) 300 360
+    sh
+    wenn (  :f >= 10)
+    [
+        vw (:x/2.9)
+        sa
+        sstb 15
+        vw (:x/9)
+        sh
+    ]
+    [
+        vw (:x/2.3)
+    ]
+    sstb 3
+    vw (:x/5)
+    re 90
+    vw (:x/3.9) 
+    kreis (:x/7)
+    li 180
+    vw (:x/2)
+    kreis (:x/7)
+    sa
+]
+Ende
+
+lerne hangman_dialog
+  lese [Wie heißt du?] "name
+  lese (satz [Hallo] :name [, gib bitte das zu eratene Wort ein]) "wort
+  lb lt
+  lese [bitte computer weitergeben] "ph
+  lese [Wie heißt du?] "name2
+  lese (satz [Ok] :name2 [, bitte fange an zu raten]) "wort
+
+Ende
+
+lerne spierale :x :o
+wh :o
+ [
+    setze "x (:x*2)
+    vw :x
+    re 115
+ ]
+Ende
+
+
+
+lerne dreiecke :x :o
+wenn (:o > 0)
+ [
+vw :x 
+rw :x
+li 55
+dreiecke (:x/1.5) (:o-1)
+re 55
+li 120
+vw :x
+li 120 
+vw :x
+]
+Ende
+
+
+lerne hangman
+lt lb
+hangman_dialog
+lb lt
+
+
+
+Ende
