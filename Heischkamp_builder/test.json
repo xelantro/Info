@@ -1,0 +1,7 @@
+{
+  "classname": "deine mama",
+  "variables": [
+    ["String",  "deine"],
+    ["int",  "mama"]
+  ]
+}
