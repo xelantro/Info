@@ -2,6 +2,7 @@ import json
 import sys
 
 
+
 def make_method(header, body):
     return header+"\n{\n"+body+"\n}\n"
 
@@ -25,7 +26,7 @@ def parse_class(file):
     cj = json.load(open(file))
     vars = "".join([make_var(vname, vtype) for vtype, vname in cj["variables"]])
     gs = "".join([make_getter_setter(vname, vtype) for vtype, vname in cj["variables"]])
-    return make_class(cj["classname"], vars, gs)
+    return make_class(cj["classname"].capitalize(), vars, gs)
     
 
 assert(len(sys.argv) >= 2)
