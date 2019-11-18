@@ -2,9 +2,15 @@ package de.memium.util;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Comparator;
 import java.util.Iterator;
+import java.util.function.BiConsumer;
+import java.util.function.BinaryOperator;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
+import java.util.function.Supplier;
+import java.util.stream.Collector;
 import java.util.stream.Stream;
 
 public class BasicList<T> implements Iterable<T> {
@@ -16,10 +22,9 @@ public class BasicList<T> implements Iterable<T> {
 		first = last = new Node(null);
 	}
 
-	public BasicList(ArrayList<T> prev) {
-		first = last = new Node(prev.get(0));
-		prev.forEach(v->last = (last.next = new Node(v,last)));
-		first = first.next;
+	public BasicList(Collection<T> prev) {
+		this();
+		prev.forEach(this::add);
 		this.size=prev.size();
 	}
 
@@ -30,6 +35,7 @@ public class BasicList<T> implements Iterable<T> {
 	public BasicList(BasicList<T> deepcopy) {
 		this();
 		deepcopy.forEach(this::add);
+		this.size = deepcopy.size();
 	}
 
 	/*
@@ -60,6 +66,10 @@ public class BasicList<T> implements Iterable<T> {
 		if(last.val==null) { last.val = nval; }
 		else { last = (last.next = new Node(nval,last)); }
 		this.size++;
+	}
+
+	void addNode(Node nn) {
+		last = ((last = nn.prev).next = nn); 
 	}
 
 	public void set(int i, T nval) {
@@ -151,12 +161,12 @@ public class BasicList<T> implements Iterable<T> {
 
 	public Stream<T> stream() {
 		this.updateSize();
-		return Stream.iterate(first, c->c.next).limit(this.size()).map(n->n.val);
+		return Stream.iterate(first, c->c.next).limit(this.size()-1).map(n->n.val);
 	}
 
 	Stream<Node> streamNodes() {
 		this.updateSize();
-		return Stream.iterate(first, c->c.next).limit(this.size());
+		return Stream.iterate(first, c->c.next).limit(this.size()-1);
 	}
 
 	@Override
@@ -168,9 +178,12 @@ public class BasicList<T> implements Iterable<T> {
 		this.stream().forEachOrdered(c);
 	}
 
-	@SuppressWarnings("unchecked")
-	public T[] toArray() {
-		return (T[]) this.stream().toArray();
+	public Collector<T, BasicList<T>, BasicList<T>> collector() {
+		return Collector.of(
+				(Supplier<BasicList<T>>)()->new BasicList<T>(),
+				(BiConsumer<BasicList<T>, T>)(res,ele)->res.add(ele),
+				(BinaryOperator<BasicList<T>>)(res1,res2)->{res1.concat(res2); return res1;}
+				);
 	}
 
 	@Override
@@ -189,6 +202,30 @@ public class BasicList<T> implements Iterable<T> {
 		};
 	}
 
+	@SuppressWarnings("unchecked")
+	public T[] toArray() {
+		return (T[]) this.stream().toArray();
+	}
+
+	/**
+	 * sorts the list when the Type impements the interface Comparable
+	 */
+	@SuppressWarnings("unchecked")
+	public synchronized void sort() {
+		if(!(first.val instanceof Comparable)) return;
+		this.sort((v1,v2)->((Comparable<T>)v1).compareTo(v2));
+	}
+
+	public synchronized void sort(Comparator<T> comp) {
+		Node f = first;
+		this.clear();
+		Stream.iterate(f, s->s.next).limit(this.size())
+		.sorted((n1,n2)->(comp.compare(n1.val, n2.val)))
+		.forEachOrdered(this::addNode);
+		first = first.next;
+		last.next = null;
+	}
+
 	public int size() {
 		return size;
 	}
@@ -203,17 +240,19 @@ public class BasicList<T> implements Iterable<T> {
 	int calcsize() {
 		Node c = first;
 		int cs = 0;
-		do {
-			cs+=1;
-			c=c.next;
-		} while(c!=null);
+		try {
+			while(true) {
+				cs+=1;
+				c=c.next;
+			}
+		} catch (NullPointerException e) {}
 		return cs;
 	}
 
 	private class Node {
-		private T val;
-		private Node next;
-		private Node prev;
+		private T val = null;
+		private Node next = null;
+		private Node prev = null;
 
 		public Node(T val) {
 			this.val = val;
