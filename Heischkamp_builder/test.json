@@ -1,7 +1,8 @@
 {
-  "classname": "deine mama",
+  "classname": "Datenpaket",
   "variables": [
-    ["String",  "deine"],
-    ["int",  "mama"]
+    ["String",  "vonNetz"],
+    ["String",  "zuNetz"],
+	["String", "Botschaft"]
   ]
 }
