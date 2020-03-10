@@ -2,15 +2,12 @@ package de.memium.de.automaten.tester;
 
 import java.util.HashMap;
 
-public class Main {	
+public class Abi2012Feuerwehr {	
 	private enum Status {
-		q0('g','1','w','3'),
-		q1('w','2'),
-		q2('g','1','r','5'),
-		q3('g','4'),
-		q4('w', '3', 'r', '5'),
-		q5('r', '5', 'a', '6'),
-		q6('-','-');
+		q0('r','0','s','0','h','2','t','1'),
+		q1('h','3','t','2','r','0','s','0'),
+		q2('h','3','t','3','s','1','r','0'),
+		q3('r','1','s','2','h','3','t','3','-','-');
 		private HashMap<String, String> map = new HashMap<String, String>();
 		private boolean isend;
 		public Status ueberführung(String i) {
@@ -38,10 +35,12 @@ public class Main {
 		return cst.isEnd();
 	}
 
+	public Abi2012Feuerwehr() {
+		cst=Status.valueOf("q0");
+	}
 
 	public static void main(String[] args) {
-		Main m = new Main();
-		m.cst=Status.q0;
-		System.out.println(m.pruefeWort("gwgwrrrrra"));
+		Abi2012Feuerwehr m = new Abi2012Feuerwehr();
+		System.out.println(m.pruefeWort("srhrhh"));
 	}
 }
